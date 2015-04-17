@@ -1,8 +1,27 @@
 # UI Controller (dat.gui ported to commonjs)
 
-A lightweight graphical user interface for changing variables in JavaScript. 
+A lightweight graphical user interface for changing variables in JavaScript.
 
 Get started with dat.GUI by reading the tutorial at http://workshop.chromeexperiments.com/examples/gui.
+
+# Main differences compared to upstream repository
+
+* This build is commonjs compatible.
+* It is temporary published under `exdat` name on npm. I don't want to take
+`dat.gui` name, but I have very little believe that upstream repository will ever
+be migrated to npm. That said, I've also submitted [PR upstream](https://github.com/dataarts/dat.gui/pull/71)
+* The base controller class has new method, which allows to set text label:
+
+``` js
+gui.add(model, 'stable').setName('Pause Layout');
+```
+
+If you save controller instance, you can modify it at any time:
+
+```
+var myPropertyController = gui.add(model, 'stable');
+myPropertyController.setName('Hello');
+```
 
 ## Packaged Builds
 
@@ -19,7 +38,7 @@ In your `head` tag, include the following code:
 Install the module:
 
 ```
-npm install dat.gui
+npm install anvaka/dat.gui
 ```
 
 Use it:
@@ -33,8 +52,6 @@ gui.add(obj, 'x').onChange(function() {
   // obj.x will now have updated value
 });
 ```
-
-
 
 ## Directory Contents
 
