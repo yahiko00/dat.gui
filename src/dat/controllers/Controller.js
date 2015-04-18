@@ -132,19 +132,6 @@ common.extend(
      */
     isModified: function() {
       return this.initialValue !== this.getValue();
-    },
-
-    setName: function(name) {
-      if (this.__nameElement) {
-        this.__nameElement.innerHTML = escape(name);
-      }
-      return this;
-    },
-
-    getName: function () {
-      if (this.__nameElement) {
-        return this.__nameElement.innerHTML;
-      }
     }
   }
 

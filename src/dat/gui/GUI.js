@@ -835,7 +835,6 @@ function createGUI() {
     var name = document.createElement('span');
     dom.addClass(name, 'property-name');
     name.innerHTML = controller.property;
-    controller.__nameElement = name;
 
     var container = document.createElement('div');
     container.appendChild(name);

@@ -1087,6 +1087,7 @@ function hueGradient(elem) {
  */
 
 var common = require('../utils/common.js');
+var escape = require('../utils/escapeHtml.js');
 module.exports = Controller;
 
 /**
@@ -1207,12 +1208,12 @@ common.extend(
     isModified: function() {
       return this.initialValue !== this.getValue();
     }
-
   }
 
 );
 
-},{"../utils/common.js":18}],8:[function(require,module,exports){
+
+},{"../utils/common.js":18,"../utils/escapeHtml.js":20}],8:[function(require,module,exports){
 /**
  * dat-gui JavaScript Controller Library
  * http://code.google.com/p/dat-gui
@@ -3706,7 +3707,7 @@ function createGUI() {
   return GUI;
 }
 
-},{"../controllers/BooleanController.js":5,"../controllers/ColorController.js":6,"../controllers/Controller.js":7,"../controllers/FunctionController.js":8,"../controllers/NumberControllerBox.js":10,"../controllers/NumberControllerSlider.js":11,"../controllers/factory.js":14,"../dom/CenteredDiv.js":15,"../dom/dom.js":16,"../utils/common.js":18,"../utils/css.js":19,"../utils/requestAnimationFrame.js":20}],18:[function(require,module,exports){
+},{"../controllers/BooleanController.js":5,"../controllers/ColorController.js":6,"../controllers/Controller.js":7,"../controllers/FunctionController.js":8,"../controllers/NumberControllerBox.js":10,"../controllers/NumberControllerSlider.js":11,"../controllers/factory.js":14,"../dom/CenteredDiv.js":15,"../dom/dom.js":16,"../utils/common.js":18,"../utils/css.js":19,"../utils/requestAnimationFrame.js":21}],18:[function(require,module,exports){
 /**
  * dat-gui JavaScript Controller Library
  * http://code.google.com/p/dat-gui
@@ -3884,6 +3885,24 @@ function css() {
 }
 
 },{}],20:[function(require,module,exports){
+module.exports = escape;
+
+var entityMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': '&quot;',
+  "'": '&#39;',
+  "/": '&#x2F;'
+};
+
+function escape(string) {
+  return String(string).replace(/[&<>"'\/]/g, function(s) {
+    return entityMap[s];
+  });
+}
+
+},{}],21:[function(require,module,exports){
 /**
  * dat-gui JavaScript Controller Library
  * http://code.google.com/p/dat-gui
@@ -3916,12 +3935,13 @@ function raf() {
       };
 }
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /** @license
  * dat-gui JavaScript Controller Library
  * http://code.google.com/p/dat-gui
  *
  * Copyright 2011 Data Arts Team, Google Creative Lab
+ * Copyright 2015 Andrei Kashcha
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3955,5 +3975,5 @@ module.exports = {
   GUI: require('./dat/gui/GUI.js')
 };
 
-},{"./dat/color/Color.js":1,"./dat/color/interpret.js":2,"./dat/color/math.js":3,"./dat/controllers/BooleanController.js":5,"./dat/controllers/ColorController.js":6,"./dat/controllers/Controller.js":7,"./dat/controllers/FunctionController.js":8,"./dat/controllers/NumberController.js":9,"./dat/controllers/NumberControllerBox.js":10,"./dat/controllers/NumberControllerSlider.js":11,"./dat/controllers/OptionController.js":12,"./dat/controllers/StringController.js":13,"./dat/dom/dom.js":16,"./dat/gui/GUI.js":17}]},{},[21])(21)
+},{"./dat/color/Color.js":1,"./dat/color/interpret.js":2,"./dat/color/math.js":3,"./dat/controllers/BooleanController.js":5,"./dat/controllers/ColorController.js":6,"./dat/controllers/Controller.js":7,"./dat/controllers/FunctionController.js":8,"./dat/controllers/NumberController.js":9,"./dat/controllers/NumberControllerBox.js":10,"./dat/controllers/NumberControllerSlider.js":11,"./dat/controllers/OptionController.js":12,"./dat/controllers/StringController.js":13,"./dat/dom/dom.js":16,"./dat/gui/GUI.js":17}]},{},[22])(22)
 });
