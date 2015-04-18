@@ -640,6 +640,10 @@ function createGUI() {
         this.closed = false;
       },
 
+      update: function () {
+        updateAll(this);
+      },
+
       close: function() {
         this.closed = true;
       },
@@ -1376,6 +1380,20 @@ function createGUI() {
       c.updateDisplay();
     });
 
+  }
+
+  function updateAll(root) {
+    // Iterate over all controllers
+    updateControllers(root.__controllers);
+    Object.keys(root.__folders).forEach(function(key) {
+      updateAll(root.__folders[key]);
+    });
+  }
+
+  function updateControllers(controllers) {
+    for (var i in controllers) {
+      controllers[i].updateDisplay();
+    }
   }
 
   return GUI;

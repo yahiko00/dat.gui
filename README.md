@@ -10,6 +10,8 @@ Get started with dat.GUI by reading the tutorial at http://workshop.chromeexperi
 * It is temporary published under `exdat` name on npm. I don't want to take
 `dat.gui` name, but I have very little believe that upstream repository will ever
 be migrated to npm. That said, I've also submitted [PR upstream](https://github.com/dataarts/dat.gui/pull/71)
+* Added method to remove folder: `gui.removeFolder(folderName);`
+* Added method to update all controllers and folders in the hierarchy: `gui.update()`
 
 ## Packaged Builds
 
