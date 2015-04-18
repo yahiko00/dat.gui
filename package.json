@@ -1,6 +1,6 @@
 {
   "name": "exdat",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "main": "src/index.js",
   "scripts": {
     "browser": "browserify -s dat src/index.js > build/dat.gui.js",
