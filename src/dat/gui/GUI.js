@@ -615,6 +615,27 @@ function createGUI() {
 
       },
 
+      removeFolder: function (name) {
+        var folder = this.__folders[name];
+        if (!folder) {
+          return;
+        }
+        delete this.__folders[name];
+
+        var childControllers = folder.__controllers;
+        for (var i = 0; i < childControllers.length; ++i) {
+          childControllers[i].remove();
+        }
+
+        var childFolders = Object.keys(folder.__folders || {});
+        for (i  = 0; i < childFolders.length; ++i) {
+          var childName = childFolders[i];
+          folder.removeFolder(childName);
+        }
+        var liContainer = folder.domElement.parentNode;
+        liContainer.parentNode.removeChild(liContainer);
+      },
+
       open: function() {
         this.closed = false;
       },
@@ -814,14 +835,10 @@ function createGUI() {
     var controller;
 
     if (params.color) {
-
       controller = new ColorController(object, property);
-
     } else {
-
       var factoryArgs = [object, property].concat(params.factoryArgs);
       controller = controllerFactory.apply(gui, factoryArgs);
-
     }
 
     if (params.before instanceof Controller) {

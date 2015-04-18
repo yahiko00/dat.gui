@@ -56,9 +56,7 @@ common.extend(
 
   BooleanController.prototype,
   Controller.prototype,
-
   {
-
     setValue: function(v) {
       var toReturn = BooleanController.superclass.prototype.setValue.call(this, v);
       if (this.__onFinishChange) {
@@ -80,8 +78,5 @@ common.extend(
       return BooleanController.superclass.prototype.updateDisplay.call(this);
 
     }
-
-
   }
-
 );
