@@ -53,6 +53,7 @@ export class GUI {
     closed: boolean;
     readonly load: Object;
     useLocalStorage: boolean;
+    readonly property: string;
 }
 
 export interface GUIParams{
