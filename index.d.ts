@@ -53,7 +53,6 @@ export class GUI {
     closed: boolean;
     readonly load: Object;
     useLocalStorage: boolean;
-    readonly property: string;
 }
 
 export interface GUIParams{
@@ -91,4 +90,6 @@ export class GUIController {
     name(s: string): GUIController;
     listen(): GUIController;
     remove(): GUIController;
+
+    readonly property: string;
 }
